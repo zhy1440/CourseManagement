@@ -23,6 +23,19 @@ export default [
     component: '../layouts/BasicLayout',
     Routes: ['src/pages/Authorized'],
     routes: [
+      // new
+      {
+        path: '/new',
+        name: 'new',
+        routes: [
+          {
+            path: '/new/NewPage',
+            name: 'advancedform',
+            authority: ['admin'],
+            component: './new/NewPage',
+          },
+        ],
+      },
       // dashboard
       { path: '/', redirect: '/dashboard/analysis', authority: ['admin', 'user'] },
       {
