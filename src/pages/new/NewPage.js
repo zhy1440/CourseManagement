@@ -25,7 +25,7 @@ class NewPage extends PureComponent {
     // console.log(privateCourse);
     return (
       <div>
-        <Button type="primary" htmlType="submit" onclick={this.handleClick}>
+        <Button type="primary" htmlType="submit" onClick={this.handleClick}>
           delete
         </Button>
 
