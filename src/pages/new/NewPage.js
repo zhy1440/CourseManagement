@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
-import { Button } from 'antd';
+import Exercises from './Exercises';
 
 @connect(({ course }) => ({
   course,
@@ -20,18 +20,10 @@ class NewPage extends PureComponent {
   };
 
   render() {
-    const { course } = this.props;
-    const { privateCourse } = course;
+    // const { course } = this.props;
+    // const { privateCourse } = course;
     // console.log(privateCourse);
-    return (
-      <div>
-        <Button type="primary" htmlType="submit" onclick={this.handleClick}>
-          delete
-        </Button>
-
-        <div>{privateCourse}</div>
-      </div>
-    );
+    return <Exercises />;
   }
 }
 const mapStateToProps = state => {
