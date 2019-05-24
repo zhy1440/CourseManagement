@@ -32,10 +32,11 @@ class Columnrange extends React.Component {
         fontSize: '12', // 文本大小
         fontWeight: 'bold', // 文本粗细
         textBaseline: 'middle', // 文本基准线，可取 top middle bottom，默认为middle
+        autoRotate: false,
       },
       formatter(text) {
         const time = moment('06:00:00', 'hh:mm:ss')
-          .add(text, 'hours')
+          .add(-text, 'hours')
           .format('hh:mm:ss');
         // console.log(moment("06:00:00", "hh:mm:ss"))
         return time;
@@ -44,8 +45,8 @@ class Columnrange extends React.Component {
 
     const scale = {
       time: {
-        min: 0, // 定义数值范围的最小值
-        max: 18, // 定义数值范围的最大值
+        min: -18, // 定义数值范围的最小值
+        max: 0, // 定义数值范围的最大值
         // tickCount: 10,
         // ticks: [100, 1000, 2000, 3000], // 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
         tickInterval: 1, // 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明。
@@ -110,20 +111,20 @@ class Columnrange extends React.Component {
     ];
     const formatData = data.map(item => {
       const baseTime = moment('06:00:00', 'hh:mm:ss');
-      const startTime = moment(`${item.date} ${item.start_time}`);
-      const endTime = moment(`${item.date} ${item.end_time}`);
+      const startTime = moment(item.start_time, 'hh:mm:ss');
+      const endTime = moment(item.end_time, 'hh:mm:ss');
       const position = [
-        startTime.diff(baseTime, 'minutes') / 60,
-        endTime.diff(baseTime, 'minutes') / 60,
+        -startTime.diff(baseTime, 'minutes') / 60,
+        -endTime.diff(baseTime, 'minutes') / 60,
       ];
       // eslint-disable-next-line no-param-reassign
       item.position = position;
       return item;
     });
+    // console.log(formatData)
     return (
       <div>
         <Chart height={800} width={400} data={formatData} scale={scale}>
-          <Axis name="name" position="top" visible={false} />
           <Axis
             name="position"
             title={title}
@@ -132,6 +133,7 @@ class Columnrange extends React.Component {
             label={label}
             //   tickLine={tickLine}
           />
+          <Axis name="name" position="top" visible={false} />
           <Tooltip />
           <Geom
             type="interval"
