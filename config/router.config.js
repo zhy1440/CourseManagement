@@ -33,13 +33,12 @@ export default [
           {
             path: '/course/private_course',
             name: 'Private Course',
-            component: './Course/NewPage.js',
+            component: './Course/PrivateCourse',
           },
           {
-            path: '/course/NewPage',
-            name: 'Team Course',
-            authority: ['admin'],
-            component: './new/NewPage',
+            path: '/course/group_course',
+            name: 'Group Course',
+            component: './Course/GroupCourse',
           },
         ],
       },

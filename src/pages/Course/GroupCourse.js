@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
-import Exercises from './Exercises';
+import { Row, Col } from 'antd';
+import LeftPane from './PrivateCourse/LeftPane';
+import RightPane from './PrivateCourse/RightPane';
 
 @connect(({ course }) => ({
   course,
 }))
-class NewPage extends PureComponent {
+class GroupCourse extends PureComponent {
   componentDidMount() {
     // const { dispatch } = this.props;
     // dispatch({
@@ -23,7 +25,16 @@ class NewPage extends PureComponent {
     // const { course } = this.props;
     // const { privateCourse } = course;
     // console.log(privateCourse);
-    return <Exercises />;
+    return (
+      <Row>
+        <Col span={16}>
+          <LeftPane />
+        </Col>
+        <Col span={8}>
+          <RightPane />
+        </Col>
+      </Row>
+    );
     // return (
     //   <div>
     //     <Button type="primary" htmlType="submit" onClick={this.handleClick}>
@@ -41,4 +52,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(NewPage);
+export default connect(mapStateToProps)(GroupCourse);
