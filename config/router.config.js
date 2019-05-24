@@ -23,21 +23,28 @@ export default [
     component: '../layouts/BasicLayout',
     Routes: ['src/pages/Authorized'],
     routes: [
-      // new
+      // course
+      { path: '/', redirect: '/course/private_course', authority: ['admin', 'user'] },
       {
-        path: '/new',
-        name: 'new',
+        path: '/course',
+        name: 'course',
+        icon: 'calendar',
         routes: [
           {
-            path: '/new/NewPage',
-            name: 'advancedform',
+            path: '/course/private_course',
+            name: 'Private Course',
+            component: './Course/NewPage.js',
+          },
+          {
+            path: '/course/NewPage',
+            name: 'Team Course',
             authority: ['admin'],
             component: './new/NewPage',
           },
         ],
       },
       // dashboard
-      { path: '/', redirect: '/dashboard/analysis', authority: ['admin', 'user'] },
+      // { path: '/', redirect: '/dashboard/analysis', authority: ['admin', 'user'] },
       {
         path: '/dashboard',
         name: 'dashboard',

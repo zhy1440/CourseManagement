@@ -24,6 +24,15 @@ class NewPage extends PureComponent {
     // const { privateCourse } = course;
     // console.log(privateCourse);
     return <Exercises />;
+    // return (
+    //   <div>
+    //     <Button type="primary" htmlType="submit" onClick={this.handleClick}>
+    //       delete
+    //     </Button>
+
+    //     <div>{privateCourse}</div>
+    //   </div>
+    // );
   }
 }
 const mapStateToProps = state => {
