@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Button, Icon, Typography } from 'antd';
 import HeaderTags from './HeaderTags';
+import Columnrange from './Columnrange';
 
 const { Text } = Typography;
 export default class LeftPane extends PureComponent {
@@ -25,9 +26,7 @@ export default class LeftPane extends PureComponent {
             <Icon type="right" />
           </Button>
         </Button.Group>
-        <Typography variant="subtitle2">
-          Please select an album from the list on the left.
-        </Typography>
+        <Columnrange />
       </div>
     );
   }
